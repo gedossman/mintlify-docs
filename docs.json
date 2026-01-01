@@ -43,5 +43,14 @@
       "x": "https://x.com/interf",
       "website": "https://interf.com"
     }
+  },
+  "metadata": {
+    "og:site_name": "Interf",
+    "og:title": "Interf - The Interface for Agentic Self-Onboarding",
+    "og:description": "Interf provides the open protocol and runtime infrastructure to decouple Agent Capabilities from Enterprise Implementation. We solve the FDE crisis by treating Onboarding-as-Code.",
+    "og:image": "/logo/logo-interf.png",
+    "twitter:card": "summary",
+    "twitter:title": "Interf - The Interface for Agentic Self-Onboarding",
+    "twitter:description": "Interf provides the open protocol and runtime infrastructure to decouple Agent Capabilities from Enterprise Implementation. We solve the FDE crisis by treating Onboarding-as-Code."
   }
 }
