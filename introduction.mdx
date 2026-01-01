@@ -1,38 +1,38 @@
 ---
 title: "The Interface for Agentic Self-Onboarding"
 sidebarTitle: "Introduction"
-description: "Decoupling Agent Capabilities from Enterprise Implementation."
+description: "A standard and runtime to decouple Agent requirements from Enterprise deployment."
 ---
 
-**Interf** provides the open protocol and runtime infrastructure to solve the **Forward Deployed Engineer (FDE) Crisis**.
+**Interf** provides the open **Capabilities Protocol** and **Runtime** infrastructure to solve the **Forward Deployed Engineer (FDE) Crisis**.
 
-We treat **Capabilities-as-Code**.
+We treat **Agent Onboarding as Code**: requirements are declared in a machine-readable contract, then evaluated against the enterprise environment to produce a deterministic readiness state.
 
 ## The Problem: Blind Agents
 
-Agents are designed to be autonomous, but today they are deployed "blindly" into opaque enterprise environments. They do not know if they have the necessary Data Access, Authentication, or Compliance permissions to function.
+Agents are designed to be autonomous, but today they are deployed "blindly" into opaque enterprise environments. They do not know if they have the necessary **Data Access**, **Authentication**, or **Compliance** permissions to function.
 
-This leads to a structural failure where **readiness gaps are discovered mid-implementation**. Organizations are forced to rely on human FDEs to manually patch these gaps, causing massive stalls.
+This leads to a structural failure where **readiness gaps are discovered mid-flight**. Organizations are forced to rely on human FDEs to manually patch these gaps, causing massive stalls and frozen capital.
 
-## The Solution
+## The Solution: Protocol + Runtime
 
-Interf acts as the **Readiness Interface** between Agent Logic and Enterprise Context.
+Interf sits between **Agent Logic** and **Enterprise Context**.
 
 <CardGroup cols={2}>
-  <Card title="The Protocol (ACP)" icon="code">
-    **Agentic Capabilities Protocol.**
-    A machine-readable standard to define Agent requirements (Data, Auth, Compliance).
+  <Card title="The Protocol" icon="code">
+    **Agentic Capabilities Protocol (ACP)**
+    A machine-readable standard for declaring Agent requirements (data, auth, compliance) as a **Capabilities Contract**.
   </Card>
-  <Card title="The Runtime (MCP)" icon="server">
-    **Interf Runtime.**
-    An **MCP Server** that validates contracts and exposes a live context API for self-onboarding.
+  <Card title="The Runtime" icon="server">
+    **Interf Runtime (MCP Server)**
+    Infrastructure that evaluates the contract against the enterprise environment and exposes a **readiness state** that agents can query to self-onboard.
   </Card>
 </CardGroup>
 
 ## The Mechanism
 
-1.  **Contract:** Dependencies are defined in a `capabilities.yaml` file.
-2.  **Runtime:** The Interf Engine validates the Contract against the local environment.
+1.  **Declare:** Vendors define requirements in a `capabilities.yaml` contract.
+2.  **Evaluate:** The **Interf Runtime** checks the contract against local resources (Data, Auth, Rules).
 3.  **Onboard:** The Agent connects via **Model Context Protocol (MCP)** to discover its state and self-onboard.
 
 ```yaml
@@ -41,12 +41,12 @@ agent: "financial_analyst_agent"
 version: "0.1.0"
 
 capabilities:
-  - id: "ledger_access"
-    type: "critical"
+  - id: "ledger_write_access"
+    description: "Allows agent to update Q4 forecasts"
     prerequisites:
       - type: "data"
         resource: "snowflake_finance"
-        access: "read_only"
+        access: "write"
       - type: "compliance"
         standard: "soc2_type_ii"
 ```
