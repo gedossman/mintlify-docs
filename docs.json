@@ -7,6 +7,12 @@
     "light": "#2563EB",
     "dark": "#153885"
   },
+  "background": {
+    "color": {
+      "light": "#2563EB",
+      "dark": "#2563EB"
+    }
+  },
   "favicon": "/logo/favicon/favicon.ico",
   "logo": {
     "light": "/logo/logo-interf.png",
@@ -20,6 +26,14 @@
   "appearance": {
     "default": "dark",
     "strict": true
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Contact",
+        "href": "mailto:info@interf.com"
+      }
+    ]
   },
   "navigation": {
     "tabs": [
@@ -41,7 +55,7 @@
       "github": "https://github.com/interf-protocol",
       "linkedin": "https://www.linkedin.com/company/interf",
       "x": "https://x.com/interf",
-      "website": "https://interf.com"
+      "website": "mailto:info@interf.com"
     }
   },
   "metadata": {
