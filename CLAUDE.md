@@ -1,33 +1,6 @@
----
-title: "Claude Code setup"
-description: "Configure Claude Code for your documentation workflow"
-icon: "asterisk"
----
+# CLAUDE.md
 
-Claude Code is Anthropic's official CLI tool. This guide will help you set up Claude Code to help you write and maintain your documentation.
-
-## Prerequisites
-
-- Active Claude subscription (Pro, Max, or API access)
-
-## Setup
-
-1. Install Claude Code globally:
-
-  ```bash
-  npm install -g @anthropic-ai/claude-code
-```
-
-2. Navigate to your docs directory.
-3. (Optional) Add the `CLAUDE.md` file below to your project.
-4. Run `claude` to start.
-
-## Create `CLAUDE.md`
-
-Create a `CLAUDE.md` file at the root of your documentation repository to train Claude Code on your specific documentation standards:
-
-````markdown
-# Mintlify documentation
+# Mintlify documentation official for Claude.MD
 
 ## Working relationship
 - You can push back on ideas-this can lead to better documentation. Cite sources and explain your reasoning when you do so
@@ -73,4 +46,38 @@ Create a `CLAUDE.md` file at the root of your documentation repository to train 
 - Use absolute URLs for internal links
 - Include untested code examples
 - Make assumptions - always ask for clarification
-````
+
+
+**** CLAUDE Agent Analysis:
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+This is a Mintlify documentation site. Mintlify is a documentation platform that renders MDX files into a polished documentation website.
+
+## Commands
+
+```bash
+# Install Mintlify CLI globally
+npm i -g mint
+
+# Start local development server (runs at http://localhost:3000)
+mint dev
+
+# Update CLI to latest version (use if dev environment has issues)
+mint update
+```
+
+## Architecture
+
+- **docs.json** - Central configuration file defining navigation structure, theme colors, logos, and site settings
+- **MDX files** - Documentation pages written in MDX (Markdown + JSX components)
+- **snippets/** - Reusable content fragments that can be included in multiple pages
+- **api-reference/openapi.json** - OpenAPI spec for auto-generated API documentation
+
+## Key Concepts
+
+- Navigation is defined in `docs.json` under the `navigation` key with tabs and groups
+- Pages are referenced by their path without the `.mdx` extension (e.g., `"essentials/settings"`)
+- The `index.mdx` file is the homepage
+- Changes pushed to the default branch auto-deploy via the Mintlify GitHub app

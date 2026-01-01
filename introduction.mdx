@@ -1,0 +1,56 @@
+---
+title: "The Interface for Agentic Self-Onboarding"
+sidebarTitle: "Introduction"
+description: "Decoupling Agent Capabilities from Enterprise Implementation."
+---
+
+**Interf** provides the open protocol and runtime infrastructure to solve the **Forward Deployed Engineer (FDE) Crisis**.
+
+We treat **Capabilities-as-Code**.
+
+## The Problem: Blind Agents
+
+Agents are designed to be autonomous, but today they are deployed "blindly" into opaque enterprise environments. They do not know if they have the necessary Data Access, Authentication, or Compliance permissions to function.
+
+This leads to a structural failure where **readiness gaps are discovered mid-implementation**. Organizations are forced to rely on human FDEs to manually patch these gaps, causing massive stalls.
+
+## The Solution
+
+Interf acts as the **Readiness Interface** between Agent Logic and Enterprise Context.
+
+<CardGroup cols={2}>
+  <Card title="The Protocol (ACP)" icon="code">
+    **Agentic Capabilities Protocol.**
+    A machine-readable standard to define Agent requirements (Data, Auth, Compliance).
+  </Card>
+  <Card title="The Runtime (MCP)" icon="server">
+    **Interf Runtime.**
+    An **MCP Server** that validates contracts and exposes a live context API for self-onboarding.
+  </Card>
+</CardGroup>
+
+## The Mechanism
+
+1.  **Contract:** Dependencies are defined in a `capabilities.yaml` file.
+2.  **Runtime:** The Interf Engine validates the Contract against the local environment.
+3.  **Onboard:** The Agent connects via **Model Context Protocol (MCP)** to discover its state and self-onboard.
+
+```yaml
+# capabilities.yaml (The Contract)
+agent: "financial_analyst_agent"
+version: "0.1.0"
+
+capabilities:
+  - id: "ledger_access"
+    type: "critical"
+    prerequisites:
+      - type: "data"
+        resource: "snowflake_finance"
+        access: "read_only"
+      - type: "compliance"
+        standard: "soc2_type_ii"
+```
+
+<Note>
+  **Status:** The Protocol Specification and Runtime (v0.1) will be published here in **January 2026**.
+</Note>
