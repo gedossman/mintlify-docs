@@ -4,8 +4,8 @@
   "name": "Interf",
   "colors": {
     "primary": "#2563EB",
-    "light": "#3B82F6",
-    "dark": "#1D4ED8"
+    "light": "#2563EB",
+    "dark": "#153885"
   },
   "favicon": "/logo/favicon/favicon.ico",
   "logo": {
