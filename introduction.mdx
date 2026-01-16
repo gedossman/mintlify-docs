@@ -1,56 +1,69 @@
 ---
-title: "The Interface for Agentic Self-Onboarding"
+title: "The Interface for Agent Self-Onboarding"
 sidebarTitle: "Introduction"
-description: "Interf provides the open protocol and runtime infrastructure to decouple Agent Capabilities from Enterprise Implementation. We solve the FDE crisis by treating Onboarding-as-Code."
+description: "Interf provides the open protocol and gateway infrastructure for agent self-onboarding. Onboarding-as-Code — requirements declared in a machine-readable contract, resolved before implementation begins."
 ---
 
-**Interf** provides the open **Capabilities Protocol** and **Runtime** infrastructure to solve the **Forward Deployed Engineer (FDE) Crisis**.
+**Interf** provides the open **Agent Onboarding Protocol (AOP)** and **Shared Context Gateway** for agent self-onboarding in enterprise environments.
 
-We treat **Agent Onboarding as Code**: requirements are declared in a machine-readable contract, then evaluated against the enterprise environment to produce a deterministic readiness state.
+We treat **Onboarding-as-Code**: requirements are declared in a machine-readable contract, then resolved against the enterprise environment to produce a deterministic readiness state.
 
 ## The Problem: Blind Agents
 
-Agents are designed to be autonomous, but today they are deployed "blindly" into opaque enterprise environments. They do not know if they have the necessary **Data Access**, **Authentication**, or **Compliance** permissions to function.
+Agents are designed to be autonomous, but today they deploy blindly into opaque enterprise environments. They don't know if they have the necessary **Data Access**, **Authentication**, or **Compliance** permissions to function.
 
-This leads to a structural failure where **readiness gaps are discovered mid-flight**. Organizations are forced to rely on human FDEs to manually patch these gaps, causing massive stalls and frozen capital.
+This leads to **readiness gaps discovered mid-flight** — stalled deployments, frozen capital, and implementation delays.
 
-## The Solution: Protocol + Runtime
+## The Solution: Protocol + Gateway
 
-Interf sits between **Agent Logic** and **Enterprise Context**.
+Interf sits between **Agent Capabilities** and **Enterprise Context**.
 
 <CardGroup cols={2}>
-  <Card title="The Protocol" icon="code">
-    **Agentic Capabilities Protocol (ACP)**
-    A machine-readable standard for declaring Agent requirements (data, auth, compliance) as a **Capabilities Contract**.
+  <Card title="Agent Onboarding Protocol (AOP)" icon="code">
+    Open standard for declaring agent requirements (data, auth, compliance) as a **Capability Contract** in `interf.yaml`.
   </Card>
-  <Card title="The Runtime" icon="server">
-    **Interf Runtime (MCP Server)**
-    Infrastructure that evaluates the contract against the enterprise environment and exposes a **readiness state** that agents can query to self-onboard.
+  <Card title="Shared Context Gateway (MCP Server)" icon="server">
+    Resolves contracts against the enterprise environment. Exposes **MCP endpoint** for agents to query readiness and self-onboard.
   </Card>
 </CardGroup>
 
 ## The Mechanism
 
-1.  **Declare:** Vendors define requirements in a `capabilities.yaml` contract.
-2.  **Evaluate:** The **Interf Runtime** checks the contract against local resources (Data, Auth, Rules).
-3.  **Onboard:** The Agent connects via **Model Context Protocol (MCP)** to discover its state and self-onboard.
+1. **Define:** Vendors define requirements in an `interf.yaml` contract.
+2. **Resolve:** Enterprise prepares dependencies. Gateway tracks resolution.
+3. **Onboard:** Agent connects via **MCP**, checks readiness, proceeds when ready.
 
 ```yaml
-# capabilities.yaml (The Contract)
-agent: "financial_analyst_agent"
-version: "0.1.0"
+# interf.yaml
+gateway: "0.1.3"
 
-capabilities:
-  - id: "ledger_write_access"
-    description: "Allows agent to update Q4 forecasts"
-    prerequisites:
-      - type: "data"
-        resource: "snowflake_finance"
-        access: "write"
-      - type: "compliance"
-        standard: "soc2_type_ii"
+contract:
+  name: "Workplace Scenario Modeling"
+  author: "GATHR Workplace"
+  version: "1.4.0"
+
+schemas:
+  interf: "@interf/schema@0.1.0"
+
+dependencies:
+  required:
+    - ref: interf.real_estate.lease_portfolio
+    - ref: interf.hr.headcount_data
+
+    - id: space_utilization
+      title: "Space Utilization"
+      description: "Desk usage, attendance patterns"
+      owner: "COO / Head of Workplace"
+
+  optional:
+    - ref: interf.finance.occupancy_costs
+
+    - id: budget_constraints
+      title: "Budget Constraints"
+      description: "Cost targets, approval thresholds"
+      owner: "CFO"
 ```
 
 <Note>
-  **Status:** The Protocol Specification and Runtime (v0.1) will be published here in **January 2026**.
+  **Status:** Protocol Specification and Gateway (v0.1) publishing **January 2026**.
 </Note>
