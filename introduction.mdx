@@ -1,12 +1,29 @@
 ---
 title: "The Interface for Agent Self-Onboarding"
 sidebarTitle: "Introduction"
-description: "Interf provides the open protocol and gateway infrastructure for agent self-onboarding. Onboarding-as-Code — requirements declared in a machine-readable contract, resolved before implementation begins."
+description: "Interf provides the open protocol and MCP gateway for agent self-onboarding. Onboarding-as-Code — requirements declared in a machine-readable contract, simulated before implementation begins."
 ---
 
-**Interf** provides the open **Agent Onboarding Protocol (AOP)** and **Shared Context Gateway** for agent self-onboarding in enterprise environments.
+**Interf** provides the open **Agent Readiness Protocol** and **MCP Gateway** for agent self-onboarding in enterprise environments.
 
-We treat **Onboarding-as-Code**: requirements are declared in a machine-readable contract, then resolved against the enterprise environment to produce a deterministic readiness state.
+We treat **Onboarding-as-Code**: requirements are declared in a machine-readable `interf.yaml` manifest, then simulated against real enterprise profiles to surface every dependency, stakeholder, and timeline — before a single line of integration code is written.
+
+## Quick Start
+
+Install the MCP server and connect it to Claude Code in one command:
+
+```bash
+claude mcp add interf-gateway -e OPENROUTER_API_KEY=sk-or-... -- npx -y @interf/gateway
+```
+
+Then in any project:
+
+```
+> Use interf to generate an agent readiness spec for this project
+> Run a simulation for a Fortune 500 bank
+```
+
+That's it. The agent generates your `interf.yaml`, runs an LLM-powered simulation, and saves results to `.interf/simulations/`.
 
 ## The Problem: Blind Agents
 
@@ -19,51 +36,90 @@ This leads to **readiness gaps discovered mid-flight** — stalled deployments, 
 Interf sits between **Agent Capabilities** and **Enterprise Context**.
 
 <CardGroup cols={2}>
-  <Card title="Agent Onboarding Protocol (AOP)" icon="code">
-    Open standard for declaring agent requirements (data, auth, compliance) as a **Capability Contract** in `interf.yaml`.
+  <Card title="Agent Readiness Protocol" icon="code">
+    Open standard for declaring agent requirements (APIs, auth, compliance, approvals) as a
+    manifest in `interf.yaml`.
   </Card>
-  <Card title="Shared Context Gateway (MCP Server)" icon="server">
-    Resolves contracts against the enterprise environment. Exposes **MCP endpoint** for agents to query readiness and self-onboard.
+  <Card title="MCP Gateway" icon="server">
+    Coding agents connect via MCP to generate specs, run enterprise deployment
+    simulations, and get per-dependency resolution flows.
   </Card>
 </CardGroup>
 
-## The Mechanism
+## How It Works
 
-1. **Define:** Vendors define requirements in an `interf.yaml` contract.
-2. **Resolve:** Enterprise prepares dependencies. Gateway tracks resolution.
-3. **Onboard:** Agent connects via **MCP**, checks readiness, proceeds when ready.
+1. **Generate:** Agent calls `get_protocol_guidance`, learns the spec, analyzes your project, and writes an `interf.yaml`.
+2. **Simulate:** Agent calls `run_simulation` with your manifest and target enterprise profiles (e.g. "Fortune 500 bank", "Series B fintech").
+3. **Resolve:** Each dependency gets a full resolution flow — steps, owners, timelines, risks, and mitigations.
 
 ```yaml
 # interf.yaml
-gateway: "0.1.3"
-
-contract:
-  name: "Workplace Scenario Modeling"
-  author: "GATHR Workplace"
-  version: "1.4.0"
-
-schemas:
-  interf: "@interf/schema@0.1.0"
+name: crm-automation-agent
+version: 0.1.0
+description: Automates CRM data entry and follow-up scheduling
 
 dependencies:
-  required:
-    - ref: interf.real_estate.lease_portfolio
-    - ref: interf.hr.headcount_data
+  - type: api
+    name: Salesforce API
+    description: Read/write contacts and opportunities
+    required: true
+    config:
+      endpoint: https://api.salesforce.com
+      auth_type: oauth2
+      scopes: [api, refresh_token]
 
-    - id: space_utilization
-      title: "Space Utilization"
-      description: "Desk usage, attendance patterns"
-      owner: "COO / Head of Workplace"
+  - type: auth
+    name: SSO Integration
+    description: Enterprise SSO for agent authentication
+    required: true
+    config:
+      provider: okta
+      protocol: saml
 
-  optional:
-    - ref: interf.finance.occupancy_costs
+  - type: compliance
+    name: SOC2 Compliance
+    description: Required for handling customer PII
+    required: true
+    config:
+      frameworks: [SOC2]
+      controls: [data_encryption, audit_logging, access_review]
 
-    - id: budget_constraints
-      title: "Budget Constraints"
-      description: "Cost targets, approval thresholds"
-      owner: "CFO"
+  - type: approval
+    name: Security Review
+    description: InfoSec team must approve API access
+    required: true
+    config:
+      approver_role: security_engineer
+      justification: Agent accesses customer PII via Salesforce
+
+capabilities:
+  - read_contacts
+  - write_contacts
+  - read_opportunities
+  - schedule_followups
+
+risk_level: high
 ```
 
+## Simulation Output
+
+Each simulation returns structured, per-dependency analysis:
+
+- **Resolution flow** — ordered steps with owners, timelines, and blockers
+- **Stakeholders** — roles, involvement level, time commitment
+- **Risks** — likelihood, impact, and mitigations
+- **Critical path** — total days to production readiness
+
+Results are saved to `.interf/simulations/` for visualization and tracking.
+
+## Install
+
+<CodeGroup>
+```bash npm
+claude mcp add interf-gateway -e OPENROUTER_API_KEY=sk-or-... -- npx -y @interf/gateway
+```
+</CodeGroup>
+
 <Note>
-  **Status:** Protocol Specification and Gateway OSS publishing **January 2026**.
+  **`@interf/gateway`** is live on npm. Get your OpenRouter API key at [openrouter.ai](https://openrouter.ai).
 </Note>
