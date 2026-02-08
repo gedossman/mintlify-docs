@@ -4,14 +4,6 @@ sidebarTitle: "Introduction"
 description: "Interf provides the open protocol and Agent Readiness Gateway for enterprise deployment. Readiness-as-Code — requirements declared in a machine-readable contract, simulated before implementation begins."
 ---
 
-**Interf** provides the open **Agent Readiness Protocol** and **Agent Readiness Gateway** for enterprise environments.
-
-We treat **Readiness-as-Code**: requirements are declared in a machine-readable `interf.yaml` manifest, then simulated against real enterprise profiles to surface every dependency, stakeholder, and timeline — before a single line of integration code is written.
-
-## Quick Start
-
-Install the MCP server and connect it to Claude Code in one command:
-
 ```bash
 claude mcp add interf-gateway -e OPENROUTER_API_KEY=sk-or-... -- npx -y @interf/gateway
 ```
@@ -24,6 +16,16 @@ Then in any project:
 ```
 
 That's it. The agent generates your `interf.yaml`, runs an LLM-powered simulation, and saves results to `.interf/simulations/`.
+
+<Note>
+  **`@interf/gateway`** is live on npm. Get your OpenRouter API key at [openrouter.ai](https://openrouter.ai).
+</Note>
+
+---
+
+**Interf** provides the open **Agent Readiness Protocol** and **Agent Readiness Gateway** for enterprise environments.
+
+We treat **Readiness-as-Code**: requirements are declared in a machine-readable `interf.yaml` manifest, then simulated against real enterprise profiles to surface every dependency, stakeholder, and timeline — before a single line of integration code is written.
 
 ## The Problem: Blind Agents
 
@@ -111,15 +113,3 @@ Each simulation returns structured, per-dependency analysis:
 - **Critical path** — total days to production readiness
 
 Results are saved to `.interf/simulations/` for visualization and tracking.
-
-## Install
-
-<CodeGroup>
-```bash npm
-claude mcp add interf-gateway -e OPENROUTER_API_KEY=sk-or-... -- npx -y @interf/gateway
-```
-</CodeGroup>
-
-<Note>
-  **`@interf/gateway`** is live on npm. Get your OpenRouter API key at [openrouter.ai](https://openrouter.ai).
-</Note>
