@@ -1,7 +1,7 @@
 ---
 title: "The Interface for Agent Readiness"
 sidebarTitle: "Introduction"
-description: "Interf provides the open protocol and Agent Readiness Gateway for enterprise deployment. Readiness-as-Code — requirements declared in a machine-readable contract, simulated before implementation begins."
+description: "Interf is the open protocol and gateway for agent readiness in enterprise environments. Define your agent's requirements, simulate enterprise deployments, and publish to the registry."
 ---
 
 ## Quick Start
@@ -17,44 +17,22 @@ Then in any project:
 > Run a simulation for a Fortune 500 bank
 ```
 
-That's it. The agent generates your `interf.yaml`, runs an LLM-powered simulation, and saves results to `.interf/simulations/`.
+Your coding agent analyzes the project, generates an `interf.yaml` manifest declaring every dependency your agent needs from an enterprise, and runs a deployment simulation against real enterprise profiles.
 
 <Note>
   **`@interf/gateway`** is live on npm. Get your OpenRouter API key at [openrouter.ai](https://openrouter.ai).
 </Note>
 
----
+## What You Get
 
-**Interf** provides the open **Agent Readiness Protocol** and **Agent Readiness Gateway** for enterprise environments.
+Define your agent's enterprise requirements once in `interf.yaml` — APIs, auth, compliance, approvals — then simulate what deployment looks like at any enterprise profile.
 
-We treat **Readiness-as-Code**: requirements are declared in a machine-readable `interf.yaml` manifest, then simulated against real enterprise profiles to surface every dependency, stakeholder, and timeline — before a single line of integration code is written.
+Each simulation returns per-dependency analysis:
 
-## The Problem: Blind Agents
-
-Agents are designed to be autonomous, but today they deploy blindly into opaque enterprise environments. They don't know if they have the necessary **Data Access**, **Authentication**, or **Compliance** permissions to function.
-
-This leads to **readiness gaps discovered mid-flight** — stalled deployments, frozen capital, and implementation delays.
-
-## The Solution: Protocol + Gateway
-
-Interf sits between **Agent Capabilities** and **Enterprise Context**.
-
-<CardGroup cols={2}>
-  <Card title="Agent Readiness Protocol" icon="code">
-    Open standard for declaring agent requirements (APIs, auth, compliance, approvals) as a
-    manifest in `interf.yaml`.
-  </Card>
-  <Card title="Agent Readiness Gateway" icon="server">
-    Coding agents connect via MCP to generate specs, run enterprise deployment
-    simulations, and get per-dependency resolution flows.
-  </Card>
-</CardGroup>
-
-## How It Works
-
-1. **Generate:** Agent calls `get_protocol_guidance`, learns the spec, analyzes your project, and writes an `interf.yaml`.
-2. **Simulate:** Agent calls `run_simulation` with your manifest and target enterprise profiles (e.g. "Fortune 500 bank", "Series B fintech").
-3. **Resolve:** Each dependency gets a full resolution flow — steps, owners, timelines, risks, and mitigations.
+- **Resolution flow** — ordered steps with owners, timelines, and blockers
+- **Stakeholders** — roles, involvement level, time commitment
+- **Risks** — likelihood, impact, and mitigations
+- **Critical path** — total days to production readiness
 
 ```yaml
 # interf.yaml
@@ -105,13 +83,49 @@ capabilities:
 risk_level: high
 ```
 
-## Simulation Output
+---
 
-Each simulation returns structured, per-dependency analysis:
+## The Vision: Agents That Know They're Not Ready
 
-- **Resolution flow** — ordered steps with owners, timelines, and blockers
-- **Stakeholders** — roles, involvement level, time commitment
-- **Risks** — likelihood, impact, and mitigations
-- **Critical path** — total days to production readiness
+Today, agents deploy blindly into enterprise environments. They don't know if they have the necessary data access, authentication, or compliance permissions to function. Readiness gaps are discovered mid-flight — stalling deployments and freezing capital.
 
-Results are saved to `.interf/simulations/` for visualization and tracking.
+**Interf changes this.** We're building the protocol and infrastructure for agent self-awareness in enterprise environments.
+
+### Agent Readiness Protocol
+
+An open standard for declaring what agents need from enterprises to be ready. Dependencies are specified in `interf.yaml` — a machine-readable contract between vendor and enterprise.
+
+Vendors define it. Enterprises resolve it. Agents verify it.
+
+### Agent Readiness Gateway
+
+The runtime layer where agents and enterprises communicate readiness.
+
+<CardGroup cols={2}>
+  <Card title="For Vendors" icon="code">
+    Define your agent's requirements in `interf.yaml`. Simulate deployments against enterprise profiles.
+    Publish to the Interf registry so enterprises can self-prepare.
+  </Card>
+  <Card title="For Enterprises" icon="server">
+    Pull vendor manifests from the registry. Run pre-flight checks against your environment.
+    Resolve dependencies before the agent arrives — not after.
+  </Card>
+</CardGroup>
+
+### How It Works in Production
+
+1. **Enterprise** loads a vendor's `interf.yaml` into the gateway, creating a readiness workspace.
+2. **Gateway** exposes readiness state as an MCP endpoint — each dependency tracked from unresolved to verified.
+3. **Enterprise IT** resolves dependencies (provisions API access, configures SSO, completes security reviews).
+4. **Vendor agent** connects to the gateway, queries its readiness state, and self-verifies each dependency.
+5. **Agent confirms** 10/10 dependencies verified — ready for production.
+
+The gateway is the communication layer between "enterprise prepared this" and "agent confirms it works." Resolution happens on the enterprise side. Verification happens on the agent side. Interf connects the two.
+
+### What's Available Today
+
+The simulation toolkit is the first step. Create your `interf.yaml`, simulate enterprise deployments, and publish to the registry. The full agent self-onboarding experience — where your agent connects to the gateway, queries its readiness, and verifies dependencies in real time — is what we're building toward.
+
+<Card title="Get Started" icon="rocket" href="#quick-start">
+  Install the MCP server and create your first agent readiness manifest.
+</Card>
