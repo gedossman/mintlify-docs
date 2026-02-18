@@ -26,12 +26,13 @@
       {
         "label": "Trust Center",
         "href": "https://trust.interf.com/"
-      },
-      {
-        "label": "Contact",
-        "href": "mailto:info@interf.com"
       }
-    ]
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Contact",
+      "href": "mailto:info@interf.com"
+    }
   },
   "navigation": {
     "tabs": [
@@ -42,6 +43,15 @@
             "group": "Overview",
             "pages": [
               "introduction"
+            ]
+          },
+          {
+            "group": "",
+            "pages": [
+              {
+                "page": "Trust Center",
+                "href": "https://trust.interf.com/"
+              }
             ]
           }
         ]
