@@ -24,6 +24,10 @@
   "navbar": {
     "links": [
       {
+        "label": "Trust Center",
+        "href": "https://trust.interf.com/"
+      },
+      {
         "label": "Contact",
         "href": "mailto:info@interf.com"
       }
