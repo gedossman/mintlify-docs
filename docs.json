@@ -5,7 +5,7 @@
   "colors": {
     "primary": "#2563EB",
     "light": "#2563EB",
-    "dark": "#153885"
+    "dark": "#2563EB"
   },
   "favicon": "/logo/favicon/favicon.ico",
   "logo": {
@@ -35,6 +35,15 @@
     }
   },
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Trust Center",
+          "href": "https://trust.interf.com/",
+          "icon": "shield-check"
+        }
+      ]
+    },
     "tabs": [
       {
         "tab": "Overview",
@@ -42,16 +51,7 @@
           {
             "group": "Overview",
             "pages": [
-              "introduction"
-            ]
-          },
-          {
-            "group": "",
-            "pages": [
-              {
-                "page": "Trust Center",
-                "href": "https://trust.interf.com/"
-              }
+              "index"
             ]
           }
         ]
