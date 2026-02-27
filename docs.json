@@ -25,15 +25,20 @@
     "links": [
       {
         "label": "npm",
-        "href": "https://www.npmjs.com/package/interf"
+        "href": "https://www.npmjs.com/package/interf",
+        "icon": "npm",
+        "iconType": "brands"
       },
       {
         "label": "GitHub",
-        "href": "https://github.com/interf-labs/cli"
+        "href": "https://github.com/interf-labs/cli",
+        "icon": "github",
+        "iconType": "brands"
       },
       {
         "label": "Trust Center",
-        "href": "https://trust.interf.com/"
+        "href": "https://trust.interf.com/",
+        "icon": "shield-check"
       }
     ],
     "primary": {

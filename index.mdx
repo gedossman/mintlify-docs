@@ -89,7 +89,7 @@ risk_level: high
 
 ---
 
-## Installation
+## Install
 
 <CodeGroup>
 
@@ -103,36 +103,7 @@ npm install -g interf
 
 </CodeGroup>
 
-Auto-detects your coding agent and installs skills to all detected agents.
-
-### CLI Commands
-
-```bash
-interf                  # Install skills and show status
-interf validate         # Validate interf.yaml against the protocol schema
-interf install-skill    # Reinstall or manage skills
-interf login            # Authenticate with interf.com (coming soon)
-interf publish          # Publish onboarding contract to registry (coming soon)
-```
-
-### Supported Agents
-
-<CardGroup cols={4}>
-  <Card title="Claude Code" icon="terminal">
-    `~/.claude/skills/`
-  </Card>
-  <Card title="Codex" icon="terminal">
-    `~/.codex/skills/`
-  </Card>
-  <Card title="Cursor" icon="terminal">
-    `~/.cursor/skills/`
-  </Card>
-  <Card title="Goose" icon="terminal">
-    `~/.config/goose/skills/`
-  </Card>
-</CardGroup>
-
-Agents are auto-detected. Skills are installed to all detected agents.
+Auto-detects your coding agent (Claude Code, Codex, Cursor, Goose) and installs skills.
 
 ---
 
