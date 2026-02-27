@@ -24,6 +24,14 @@
   "navbar": {
     "links": [
       {
+        "label": "npm",
+        "href": "https://www.npmjs.com/package/interf"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/interf-labs/cli"
+      },
+      {
         "label": "Trust Center",
         "href": "https://trust.interf.com/"
       }
@@ -60,6 +68,7 @@
   },
   "footer": {
     "socials": {
+      "github": "https://github.com/interf-labs/cli",
       "linkedin": "https://www.linkedin.com/company/interf",
       "x": "https://x.com/interf",
       "website": "https://interf.com"
