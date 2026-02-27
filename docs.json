@@ -68,10 +68,10 @@
   "metadata": {
     "og:site_name": "Interf",
     "og:title": "Interf - The Unified Interface for Agent Onboarding",
-    "og:description": "Interf is the unified interface for agent onboarding in enterprise. Create onboarding contracts, preview deployments, and enable agent self-onboarding.",
+    "og:description": "Interf is the unified interface for agent onboarding in enterprise. Create onboarding contracts, preview rollouts, and enable agent self-onboarding.",
     "og:image": "/logo/logo-interf.png",
     "twitter:card": "summary",
     "twitter:title": "Interf - The Unified Interface for Agent Onboarding",
-    "twitter:description": "Interf is the unified interface for agent onboarding in enterprise. Create onboarding contracts, preview deployments, and enable agent self-onboarding."
+    "twitter:description": "Interf is the unified interface for agent onboarding in enterprise. Create onboarding contracts, preview rollouts, and enable agent self-onboarding."
   }
 }
