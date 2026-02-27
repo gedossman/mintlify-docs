@@ -22,16 +22,16 @@ Works with **Claude Code**, **Codex**, **Cursor**, and **Goose**.
 
 ## Who It's For
 
-Interf provides a toolkit for **vendor deploy engineers and teams responsible for enterprise deployments**. If you're shipping an AI agent into Fortune 500 environments, Interf helps you:
+Interf provides a toolkit for **vendor deploy engineers and teams responsible for enterprise rollouts**. If you're shipping an AI agent into Fortune 500 environments, Interf helps you:
 
 - **Extract** every enterprise dependency from your codebase — APIs, databases, auth, secrets, compliance, approvals
-- **Review** the onboarding contract before it becomes your deployment spec
-- **Preview** deployment against specific enterprise profiles — Nike, Goldman Sachs, Series B startup — and get timelines, stakeholders, risks, and blockers
+- **Review** the onboarding contract before you publish it
+- **Preview** rollout against specific enterprise profiles — Nike, Goldman Sachs, Series B startup — and get timelines, stakeholders, risks, and blockers
 - **Check enterprise onboarding** for your solution within 5 minutes
 
 ## What You Get
 
-Each deployment preview produces per-dependency analysis:
+Each rollout preview produces per-dependency analysis:
 
 - **Resolution flow** — ordered steps with owners, timelines, and blockers
 - **Stakeholders** — roles, involvement level, time commitment
@@ -91,13 +91,13 @@ risk_level: high
 
 ## The Protocol
 
-Today, agents deploy blindly into enterprise environments. Onboarding gaps — missing data access, authentication, compliance permissions — are discovered mid-flight, forcing vendors and enterprises to fix them in production. Forward-deployed engineers spend months on discovery and dependency resolution that should have happened before deployment began.
+Today, agents ship blindly into enterprise environments. Onboarding gaps — missing data access, authentication, compliance permissions — are discovered mid-flight, forcing vendors and enterprises to fix them in production. Forward-deployed engineers spend months on discovery and dependency resolution that should have happened before rollout began.
 
-**Interf provides the structural fix.** The Agent Onboarding Protocol is an open standard for declaring what agents need from enterprises before deployment. Vendors define it. Enterprises resolve it. Agents verify it.
+**Interf provides the structural fix.** The Agent Onboarding Protocol is an open standard for declaring what agents need from enterprises before rollout. Vendors define it. Enterprises resolve it. Agents verify it.
 
 <CardGroup cols={2}>
   <Card title="For Vendors" icon="code">
-    Define your agent's requirements in `interf.yaml`. Preview deployments against enterprise profiles.
+    Define your agent's requirements in `interf.yaml`. Preview rollouts against enterprise profiles.
     Publish to the Interf registry so enterprises can self-prepare.
   </Card>
   <Card title="For Enterprises" icon="server">
@@ -108,7 +108,7 @@ Today, agents deploy blindly into enterprise environments. Onboarding gaps — m
 
 ### How It Works in Production
 
-The open-source toolkit is day zero — vendors adopt the protocol, define their onboarding contract, and publish to the Interf registry. Enterprises pull the contract and self-prepare for agent onboarding. The production flow eliminates the 6+ months of discovery, dependency resolution, and back-and-forth that stalls enterprise deployments today.
+The open-source toolkit is day zero — vendors adopt the protocol, define their onboarding contract, and publish to the Interf registry. Enterprises pull the contract and self-prepare for agent onboarding. The production flow eliminates the 6+ months of discovery, dependency resolution, and back-and-forth that stalls enterprise rollouts today.
 
 1. **Vendor** defines `interf.yaml` and publishes to the Interf registry — the onboarding contract declaring every dependency.
 2. **Enterprise** loads the vendor contract into the Interf Gateway, creating an onboarding workspace.
