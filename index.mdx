@@ -1,7 +1,7 @@
 ---
-title: "The Interface for Agent Readiness"
+title: "The Unified Interface for Agent Onboarding"
 sidebarTitle: "Introduction"
-description: "Interf is the standard interface for agent onboarding in enterprise. Define your agent's readiness contract, simulate enterprise deployments, and publish to the registry — so enterprises can self-prepare and your agent can self-onboard."
+description: "Interf is the unified interface for agent onboarding in enterprise. Create your agent's onboarding contract, preview enterprise deployments, and publish to the registry — so enterprises can self-prepare and your agent can self-onboard."
 ---
 
 ## Quick Start
@@ -9,15 +9,15 @@ description: "Interf is the standard interface for agent onboarding in enterpris
 Tell your coding agent:
 
 ```
-use npx interf to create a readiness spec for Nike deployment
+use npx interf to create an onboarding contract and preview Nike deployment
 ```
 
-That's it. Your coding agent installs the toolkit, scans your codebase, extracts an `interf.yaml` manifest declaring every dependency, and simulates enterprise readiness — all in one prompt.
+That's it. Your coding agent installs the toolkit, scans your codebase, extracts an `interf.yaml` onboarding contract declaring every dependency, and previews what deployment looks like at Nike — all in one prompt.
 
 Works with **Claude Code**, **Codex**, **Cursor**, and **Goose**.
 
 <Note>
-  **No API keys. No network calls. No code execution.** Interf installs skills — structured domain knowledge — to your coding agent. The intelligence comes from your agent; Interf teaches it the Agent Readiness Protocol.
+  **No API keys. No network calls. No code execution.** Interf installs skills — structured domain knowledge — to your coding agent. The intelligence comes from your agent; Interf teaches it the Agent Onboarding Protocol.
 </Note>
 
 ## Who It's For
@@ -25,21 +25,21 @@ Works with **Claude Code**, **Codex**, **Cursor**, and **Goose**.
 Interf provides a toolkit for **vendor deploy engineers and teams responsible for enterprise deployments**. If you're shipping an AI agent into Fortune 500 environments, Interf helps you:
 
 - **Extract** every enterprise dependency from your codebase — APIs, databases, auth, secrets, compliance, approvals
-- **Review** the draft manifest before it becomes your deployment contract
-- **Simulate** readiness against specific enterprise profiles — Goldman Sachs, Nike, Series B startup — and get timelines, stakeholders, risks, and blockers
-- **Check enterprise readiness** for your solution within 5 minutes
+- **Review** the onboarding contract before it becomes your deployment spec
+- **Preview** deployment against specific enterprise profiles — Nike, Goldman Sachs, Series B startup — and get timelines, stakeholders, risks, and blockers
+- **Check enterprise onboarding** for your solution within 5 minutes
 
 ## What You Get
 
-Each simulation produces per-dependency analysis:
+Each deployment preview produces per-dependency analysis:
 
 - **Resolution flow** — ordered steps with owners, timelines, and blockers
 - **Stakeholders** — roles, involvement level, time commitment
 - **Risks** — likelihood, impact, and mitigations
-- **Critical path** — total days to production readiness
+- **Critical path** — total days to production
 
 ```yaml
-# interf.yaml — your agent's deployment contract
+# interf.yaml — your agent's onboarding contract
 name: crm-automation-agent
 version: 0.1.0
 description: Automates CRM data entry and follow-up scheduling
@@ -91,40 +91,40 @@ risk_level: high
 
 ## The Protocol
 
-Today, agents deploy blindly into enterprise environments. Readiness gaps — missing data access, authentication, compliance permissions — are discovered mid-flight, forcing vendors and enterprises to fix them in production. Forward-deployed engineers spend months on discovery and dependency resolution that should have happened before deployment began.
+Today, agents deploy blindly into enterprise environments. Onboarding gaps — missing data access, authentication, compliance permissions — are discovered mid-flight, forcing vendors and enterprises to fix them in production. Forward-deployed engineers spend months on discovery and dependency resolution that should have happened before deployment began.
 
-**Interf provides the structural fix: Readiness-as-Code.** The Agent Readiness Protocol is an open standard for declaring what agents need from enterprises before deployment. Vendors define it. Enterprises resolve it. Agents verify it.
+**Interf provides the structural fix.** The Agent Onboarding Protocol is an open standard for declaring what agents need from enterprises before deployment. Vendors define it. Enterprises resolve it. Agents verify it.
 
 <CardGroup cols={2}>
   <Card title="For Vendors" icon="code">
-    Define your agent's requirements in `interf.yaml`. Simulate deployments against enterprise profiles.
+    Define your agent's requirements in `interf.yaml`. Preview deployments against enterprise profiles.
     Publish to the Interf registry so enterprises can self-prepare.
   </Card>
   <Card title="For Enterprises" icon="server">
-    Pull vendor manifests from the registry. Run pre-flight checks against your environment.
+    Pull vendor onboarding contracts from the registry. Run pre-flight checks against your environment.
     Resolve dependencies before the agent arrives — not after.
   </Card>
 </CardGroup>
 
 ### How It Works in Production
 
-The open-source toolkit is day zero — vendors adopt the protocol, define their spec, and publish to the Interf registry. Enterprises pull the manifest and self-prepare for agent onboarding. The production flow eliminates the 6+ months of discovery, dependency resolution, and back-and-forth that stalls enterprise deployments today.
+The open-source toolkit is day zero — vendors adopt the protocol, define their onboarding contract, and publish to the Interf registry. Enterprises pull the contract and self-prepare for agent onboarding. The production flow eliminates the 6+ months of discovery, dependency resolution, and back-and-forth that stalls enterprise deployments today.
 
-1. **Vendor** defines `interf.yaml` and publishes to the Interf registry — the deployment contract declaring every dependency.
-2. **Enterprise** loads the vendor manifest into the Interf Gateway, creating a readiness workspace.
-3. **Gateway** exposes readiness state as an MCP endpoint — each dependency tracked from unresolved to verified.
+1. **Vendor** defines `interf.yaml` and publishes to the Interf registry — the onboarding contract declaring every dependency.
+2. **Enterprise** loads the vendor contract into the Interf Gateway, creating an onboarding workspace.
+3. **Gateway** exposes onboarding state as an MCP endpoint — each dependency tracked from unresolved to verified.
 4. **Enterprise IT** resolves dependencies — provisions API access, configures SSO, completes security reviews — with each resolution audited.
-5. **Vendor agent** connects to the enterprise gateway endpoint, queries its readiness state, and self-verifies each dependency against vendor criteria.
+5. **Vendor agent** connects to the enterprise gateway endpoint, queries its onboarding state, and self-verifies each dependency against vendor criteria.
 6. **Agent confirms** all dependencies verified — ready for production. Full audit trail of resolution for every item.
 
-The gateway is the standardized interface between vendor and enterprise. Resolution happens on the enterprise side. Verification happens on the agent side. Interf connects the two — with an independent, auditable handshake that establishes who is responsible for what.
+The gateway is the unified interface between vendor and enterprise. Resolution happens on the enterprise side. Verification happens on the agent side. Interf connects the two — with an independent audit trail that establishes who resolved what.
 
 Vendors who publish to the registry can rely on enterprises implementing the protocol. Enterprises who adopt the gateway can onboard any vendor agent that speaks Interf. The result: agent self-onboarding without human intervention, within the eligible scope defined by the contract.
 
 ### What's Available Today
 
-The readiness toolkit — the vendor side of the protocol. Tell your coding agent to use Interf. It will scan your codebase, produce the manifest, and simulate enterprise deployment against any profile. Simulations give you the engagement layer today; the enterprise gateway and self-onboarding are what we're building toward.
+The onboarding toolkit — the vendor side of the protocol. Tell your coding agent to use Interf. It will scan your codebase, produce the onboarding contract, and preview enterprise deployment against any profile. Previews give you the engagement layer today; the enterprise gateway and self-onboarding are what we're building toward.
 
 <Card title="Get Started" icon="rocket" href="#quick-start">
-  Tell your coding agent to use `npx interf` and create your first readiness spec.
+  Tell your coding agent to use `npx interf` and create your first onboarding contract.
 </Card>
